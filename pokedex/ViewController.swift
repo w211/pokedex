@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collection: UICollectionView!
 
     var pokemon = [Pokemon]()
+    var musicPlayer: AVAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +22,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collection.delegate = self
         collection.dataSource = self
         
+        initAudio()
         parsePokemonCSV()
         
+    }
+    
+    func initAudio() {
+        let path = NSBundle.mainBundle().pathForResource("music", ofType: "mp3")!
+        
+        do {
+            musicPlayer = try AVAudioPlayer(contentsOfURL: NSURL(string: path)!)
+            musicPlayer.prepareToPlay()
+            musicPlayer.numberOfLoops = -1
+            musicPlayer.play()
+            
+        } catch let err as NSError {
+            print(err.debugDescription)
+        }
     }
     
     func parsePokemonCSV() {
@@ -46,7 +63,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokeCell", forIndexPath: indexPath) as? PokeCell {
             
-            var poke = pokemon[indexPath.row]
+            let poke = pokemon[indexPath.row]
             cell.configureCell(poke)
             
             return cell
@@ -72,5 +89,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return CGSizeMake(105, 105)
     }
 
+    @IBAction func musicBtnPressed(sender: UIButton!) {
+        if musicPlayer.playing {
+            musicPlayer.stop()
+            sender.alpha = 0.2
+        } else {
+            musicPlayer.play()
+            sender.alpha = 1.0
+        }
+    }
 }
 
