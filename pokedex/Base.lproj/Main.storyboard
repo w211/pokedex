@@ -206,6 +206,9 @@
                                             <constraint firstAttribute="height" constant="24" id="QgS-RI-QkM"/>
                                         </constraints>
                                         <state key="normal" image="back"/>
+                                        <connections>
+                                            <action selector="backBtnPressed:" destination="5mk-rS-zmj" eventType="touchUpInside" id="sPM-yX-v5W"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
@@ -433,7 +436,16 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentEvoImg" destination="Vda-cT-wsM" id="fxg-EN-Ipi"/>
+                        <outlet property="defenseLbl" destination="5KN-UH-rgz" id="cQj-zR-x83"/>
+                        <outlet property="descriptionLbl" destination="LX4-Mo-ss6" id="2em-B6-10S"/>
+                        <outlet property="evoLbl" destination="7oq-1f-VeC" id="99X-cT-WSf"/>
+                        <outlet property="heightLbl" destination="acr-kQ-PX3" id="zoe-d5-g0O"/>
+                        <outlet property="mainImg" destination="jdg-O1-uvB" id="17F-rr-QRE"/>
                         <outlet property="nameLbl" destination="pZn-B8-cwz" id="DyP-K3-7ig"/>
+                        <outlet property="nextEvoImg" destination="QKt-1v-vak" id="PXJ-SC-rHY"/>
+                        <outlet property="pokedexLbl" destination="a3Y-Ox-1ER" id="901-pR-LUM"/>
+                        <outlet property="typeLbl" destination="PYG-4e-CXX" id="U9l-rt-4F5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEm-xD-xAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
