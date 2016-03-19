@@ -93,7 +93,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             poke = pokemon[indexPath.row]
         }
         
-        print(poke.name)
         performSegueWithIdentifier("PokemonDetailVC", sender: poke)
         
     }
