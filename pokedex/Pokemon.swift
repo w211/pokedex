@@ -25,38 +25,67 @@ class Pokemon {
     private var _pokemonUrl: String!
     
     var nextEvolutionTxt: String {
-        return _nextEvoTxt
+        get {
+            if _nextEvoTxt == nil {
+                _nextEvoTxt = ""
+            }
+            return _nextEvoTxt
+        }
     }
     
     var nextEvolutionId: String {
+        if _nextEvolutionId == nil {
+            _nextEvolutionId = ""
+        }
         return _nextEvolutionId
     }
     
     var nextEvolutionLvl: String {
+        if _nextEvolutionLvl == nil {
+            _nextEvolutionLvl = ""
+        }
         return _nextEvolutionLvl
     }
     
     var description: String {
+        if _description == nil {
+            _description = ""
+        }
         return _description
     }
     
     var type: String {
+        if _type == nil {
+            _type = ""
+        }
         return _type
     }
     
     var defense: String {
+        if _defense == nil {
+            _defense = ""
+        }
         return _defense
     }
     
     var height: String {
+        if _height == nil {
+            _height = ""
+        }
         return _height
     }
     
     var weight: String {
+        if _weight == nil {
+            _weight = ""
+        }
         return _weight
     }
     
     var attack: String {
+        if _attack == nil {
+            _attack = ""
+        }
         return _attack
     }
     
@@ -68,6 +97,8 @@ class Pokemon {
         return _pokedexId
     }
     
+    
+    // Dont need if statements here since we created an initializer plus they're grabbed from the csv file
     init(name: String, pokedexId: Int) {
         self._name = name
         self._pokedexId = pokedexId
@@ -145,6 +176,8 @@ class Pokemon {
                                 
                             }
                         
+                            completed()
+                            
                         }
                         
                     }
@@ -176,10 +209,16 @@ class Pokemon {
                                     self._nextEvolutionLvl = "\(lvl)"
                                     
                                 }
-                                
-                                print(self._nextEvolutionId)
-                                print(self._nextEvoTxt)
-                                print(self._nextEvolutionLvl)
+                                if self._nextEvolutionId != nil || self._nextEvolutionLvl != nil || self._nextEvoTxt != nil {
+                                  
+                                    print(self._nextEvolutionId)
+                                    print(self._nextEvoTxt)
+                                    print(self._nextEvolutionLvl)
+                                    
+                                } else {
+                                    print("One of the values was returned nil")
+                                }
+                           
                             }
                             
                         }
